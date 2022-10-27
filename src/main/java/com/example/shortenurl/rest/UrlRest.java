@@ -2,8 +2,6 @@ package com.example.shortenurl.rest;
 
 import com.example.shortenurl.common.BaseResponse;
 import com.example.shortenurl.entity.UrlEntity;
-import com.example.shortenurl.service.Base62Conversion;
-import com.example.shortenurl.service.SequenceGenerator;
 import com.example.shortenurl.service.UrlService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class UrlRest {
         return urlService.findByShortUrl(shortenUrl)
                 .map(UrlEntity::getLongUrl)
                 .map(RedirectView::new)
-                .orElse(new RedirectView("https://www.youtube.com/watch?v=MhQKe-aERsU&list=RDMM&index=10"));
+                .orElse(new RedirectView("/"));
     }
 
 }
